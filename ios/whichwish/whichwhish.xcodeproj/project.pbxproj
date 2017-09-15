@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00642F431F6C1DB70047E265 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00642F421F6C1DB70047E265 /* AppDelegate.swift */; };
-		00642F451F6C1DB70047E265 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00642F441F6C1DB70047E265 /* ViewController.swift */; };
 		00642F481F6C1DB70047E265 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00642F461F6C1DB70047E265 /* Main.storyboard */; };
 		00642F4A1F6C1DB70047E265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00642F491F6C1DB70047E265 /* Assets.xcassets */; };
 		00642F4D1F6C1DB70047E265 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00642F4B1F6C1DB70047E265 /* LaunchScreen.storyboard */; };
@@ -16,13 +15,16 @@
 		00642F591F6C236C0047E265 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00642F581F6C236C0047E265 /* SignUpViewController.swift */; };
 		00642F5C1F6C240D0047E265 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00642F5B1F6C240D0047E265 /* AuthService.swift */; };
 		00642F5E1F6C3EBE0047E265 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00642F5D1F6C3EBE0047E265 /* GoogleService-Info.plist */; };
+		00642F621F6C96830047E265 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 00642F611F6C96830047E265 /* ProgressHUD.m */; };
+		00642F641F6C96DD0047E265 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00642F631F6C96DD0047E265 /* UserApi.swift */; };
+		00642F661F6C97030047E265 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00642F651F6C97030047E265 /* Api.swift */; };
+		00642F681F6C97240047E265 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00642F671F6C97240047E265 /* UserModel.swift */; };
 		726A9AB73586FE4A5528F889 /* Pods_whichwhish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C7E14089EC5A12DF8F93B2 /* Pods_whichwhish.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		00642F3F1F6C1DB70047E265 /* whichwhish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whichwhish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00642F421F6C1DB70047E265 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		00642F441F6C1DB70047E265 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		00642F471F6C1DB70047E265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		00642F491F6C1DB70047E265 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00642F4C1F6C1DB70047E265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,6 +33,12 @@
 		00642F581F6C236C0047E265 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		00642F5B1F6C240D0047E265 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		00642F5D1F6C3EBE0047E265 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		00642F5F1F6C96820047E265 /* whichwhish-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "whichwhish-Bridging-Header.h"; sourceTree = "<group>"; };
+		00642F601F6C96830047E265 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		00642F611F6C96830047E265 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		00642F631F6C96DD0047E265 /* UserApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
+		00642F651F6C97030047E265 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		00642F671F6C97240047E265 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = ../UserModel.swift; sourceTree = "<group>"; };
 		3735ED6069964D660D00E3FA /* Pods-whichwhish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whichwhish.release.xcconfig"; path = "Pods/Target Support Files/Pods-whichwhish/Pods-whichwhish.release.xcconfig"; sourceTree = "<group>"; };
 		46E9989DD21527B472987F9F /* Pods-whichwhish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whichwhish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-whichwhish/Pods-whichwhish.debug.xcconfig"; sourceTree = "<group>"; };
 		87C7E14089EC5A12DF8F93B2 /* Pods_whichwhish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_whichwhish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,11 +78,16 @@
 			isa = PBXGroup;
 			children = (
 				00642F421F6C1DB70047E265 /* AppDelegate.swift */,
-				00642F441F6C1DB70047E265 /* ViewController.swift */,
 				00642F5B1F6C240D0047E265 /* AuthService.swift */,
-				00642F461F6C1DB70047E265 /* Main.storyboard */,
+				00642F631F6C96DD0047E265 /* UserApi.swift */,
+				00642F651F6C97030047E265 /* Api.swift */,
+				00642F691F6C972C0047E265 /* Model */,
 				00642F5A1F6C23770047E265 /* ViewControllers */,
 				00642F491F6C1DB70047E265 /* Assets.xcassets */,
+				00642F461F6C1DB70047E265 /* Main.storyboard */,
+				00642F601F6C96830047E265 /* ProgressHUD.h */,
+				00642F611F6C96830047E265 /* ProgressHUD.m */,
+				00642F5F1F6C96820047E265 /* whichwhish-Bridging-Header.h */,
 				00642F4B1F6C1DB70047E265 /* LaunchScreen.storyboard */,
 				00642F4E1F6C1DB70047E265 /* Info.plist */,
 				00642F5D1F6C3EBE0047E265 /* GoogleService-Info.plist */,
@@ -89,6 +102,14 @@
 				00642F581F6C236C0047E265 /* SignUpViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		00642F691F6C972C0047E265 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				00642F671F6C97240047E265 /* UserModel.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		249E9140B3250268F5D85D2A /* Frameworks */ = {
@@ -144,6 +165,7 @@
 					00642F3E1F6C1DB70047E265 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = AG358K9L6H;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -233,10 +255,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00642F451F6C1DB70047E265 /* ViewController.swift in Sources */,
 				00642F431F6C1DB70047E265 /* AppDelegate.swift in Sources */,
 				00642F5C1F6C240D0047E265 /* AuthService.swift in Sources */,
+				00642F681F6C97240047E265 /* UserModel.swift in Sources */,
+				00642F621F6C96830047E265 /* ProgressHUD.m in Sources */,
+				00642F641F6C96DD0047E265 /* UserApi.swift in Sources */,
 				00642F591F6C236C0047E265 /* SignUpViewController.swift in Sources */,
+				00642F661F6C97030047E265 /* Api.swift in Sources */,
 				00642F571F6C235B0047E265 /* SignInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,11 +386,14 @@
 			baseConfigurationReference = 46E9989DD21527B472987F9F /* Pods-whichwhish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = AG358K9L6H;
 				INFOPLIST_FILE = whichwhish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JangPro.whichwhish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "whichwhish/whichwhish-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -375,11 +403,13 @@
 			baseConfigurationReference = 3735ED6069964D660D00E3FA /* Pods-whichwhish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = AG358K9L6H;
 				INFOPLIST_FILE = whichwhish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JangPro.whichwhish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "whichwhish/whichwhish-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
