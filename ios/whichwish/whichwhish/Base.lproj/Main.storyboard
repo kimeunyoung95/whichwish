@@ -64,8 +64,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="whichwish" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ub-Ka-HpA">
-                                <rect key="frame" x="123.66666666666669" y="170" width="168" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <rect key="frame" x="117.33333333333331" y="170" width="180.33333333333337" height="36"/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="36"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -79,7 +79,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hTS-V1-JSL">
                                         <rect key="frame" x="20" y="50" width="374" height="30"/>
@@ -88,7 +88,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnf-yZ-uf2">
                                         <rect key="frame" x="20" y="100" width="374" height="44"/>
@@ -96,7 +96,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="JVT-R6-zw7"/>
                                         </constraints>
-                                        <state key="normal" title="SignIn"/>
+                                        <state key="normal" title="SignIn">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signInBtn_TouchUpInside:" destination="ct9-rG-liy" eventType="touchUpInside" id="FuY-v5-66h"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -135,7 +140,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="f3W-Xy-yBn" kind="show" id="6Ti-Hi-Rzh"/>
+                        <outlet property="emailTextField" destination="Gt6-pM-fwh" id="AiV-98-o3i"/>
+                        <outlet property="passwordTextField" destination="hTS-V1-JSL" id="Ofa-CY-biP"/>
+                        <outlet property="signInButton" destination="fnf-yZ-uf2" id="ADn-m7-hHN"/>
+                        <segue destination="f3W-Xy-yBn" kind="show" identifier="SignIn_WishVCSegue" id="Vbr-Jj-PdD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbG-iB-lgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -167,13 +175,13 @@
                                         <rect key="frame" x="20" y="50" width="334" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1rG-Hm-7gP">
                                         <rect key="frame" x="20" y="100" width="334" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ixh-Jy-d1B">
                                         <rect key="frame" x="20" y="150" width="334" height="44"/>
@@ -181,7 +189,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="uWJ-o0-SYq"/>
                                         </constraints>
-                                        <state key="normal" title="SignUp"/>
+                                        <state key="normal" title="SignUp">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signUpBtn_TouchUpInside:" destination="Mdf-OJ-PH0" eventType="touchUpInside" id="1uK-Wk-lLU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -203,6 +216,9 @@
                                 <state key="normal" title="Already have an account? Sign In">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dismiss_onClick:" destination="Mdf-OJ-PH0" eventType="touchUpInside" id="RB0-J4-rZC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -217,7 +233,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="f3W-Xy-yBn" kind="show" id="hnl-WF-oIq"/>
+                        <outlet property="emailTextField" destination="3fr-GF-Md9" id="ChQ-hr-gUV"/>
+                        <outlet property="passwordTextField" destination="1rG-Hm-7gP" id="ymz-YX-Bf9"/>
+                        <outlet property="signUpButton" destination="Ixh-Jy-d1B" id="Dna-nv-nTS"/>
+                        <outlet property="userNameTextField" destination="uWp-3t-5PG" id="IHv-dV-Iet"/>
+                        <segue destination="f3W-Xy-yBn" kind="show" identifier="SignUp_WishVCSegue" id="hnl-WF-oIq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ZX-e8-j7C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -244,6 +264,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6Ti-Hi-Rzh"/>
+        <segue reference="Vbr-Jj-PdD"/>
     </inferredMetricsTieBreakers>
 </document>
