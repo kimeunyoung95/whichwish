@@ -1,4 +1,4 @@
-package mobile.cau.swopenhack;
+package com.example.win10_pc.whichwish;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,8 +20,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "ADD", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent();
+                Intent intent = new Intent(MainActivity.this, Search_Location.class);
                 //intent add Activity
+                startActivity(intent);
             }
         });
         listView.addHeaderView(header);
