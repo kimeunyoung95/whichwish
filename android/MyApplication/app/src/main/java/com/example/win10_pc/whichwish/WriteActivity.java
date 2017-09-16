@@ -10,25 +10,15 @@ import android.widget.EditText;
 public class WriteActivity extends AppCompatActivity {
     Button button;
     EditText et1, et2, et3;
-    String mAddr, mLat, mLng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
-
-        Intent intent = getIntent();
-
         et1 = (EditText) findViewById(R.id.title_et);
         et2 = (EditText) findViewById(R.id.content_et);
         et3 = (EditText) findViewById(R.id.where_et);
         button = (Button) findViewById(R.id.ok_btn);
-
-        mAddr = intent.getStringExtra("addr");
-        mLat = intent.getStringExtra("lat");
-        mLng = intent.getStringExtra("lng");
-
-        et2.setText(mAddr);
         //객체선언
         button.setOnClickListener(new View.OnClickListener() {
             @Override
