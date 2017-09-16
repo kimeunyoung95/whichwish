@@ -3,6 +3,8 @@
     package="com.example.win10_pc.whichwish">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -21,10 +23,9 @@
         <activity android:name=".PushActivity" />
         <activity android:name=".DistanceActivity"></activity>
         <activity android:name=".Map"></activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCIqQ_KHkKXK3TNtIFbudekCnt2dOlkpbY"
-        />
+            android:value="AIzaSyCIqQ_KHkKXK3TNtIFbudekCnt2dOlkpbY" />
     </application>
-
 </manifest>
