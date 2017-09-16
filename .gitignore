@@ -1,3 +1,5 @@
-*/UserInterfaceState.xcuserstate
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
 **/.DS_Store
 
