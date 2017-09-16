@@ -1,5 +1,6 @@
 package com.example.win10_pc.whichwish;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,10 +50,12 @@ public class Location_Search extends AppCompatActivity {
         search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userStr = search_text.getText().toString();
-                String urlStr = defaultUrl + userStr;
-                ConnectThread thread = new ConnectThread(urlStr);
-                thread.start();
+                if(search_text.getText().toString() != null) {
+                    String userStr = search_text.getText().toString();
+                    String urlStr = defaultUrl + userStr;
+                    ConnectThread thread = new ConnectThread(urlStr);
+                    thread.start();
+                }
             }
         });
     }
@@ -158,7 +161,14 @@ public class Location_Search extends AppCompatActivity {
                             mLng = lngs[position];
                             mAddr = addrs[position];
 
-                            Toast.makeText(getApplicationContext(), "Latitude : " + mLat + ", Longitude : " + mLng, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), Map.class);
+                            intent.putExtra("addr", mAddr);
+                            intent.putExtra("lat", mLat);
+                            intent.putExtra("lng", mLng);
+                            intent.putExtra("search_map", search_text.getText().toString());
+                            startActivityForResult(intent, 9);
+
+
 
                         }
                     });
@@ -166,6 +176,17 @@ public class Location_Search extends AppCompatActivity {
             }catch (JSONException e){
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent){
+        super.onActivityResult(requestCode, resultCode, intent);
+        if(requestCode == 9 && resultCode == RESULT_OK){
+            String userStr = intent.getStringExtra("search");
+            search_text.setText(intent.getStringExtra("search"));
+            String urlStr = defaultUrl + userStr;
+            ConnectThread thread = new ConnectThread(urlStr);
+            thread.start();
         }
     }
 }

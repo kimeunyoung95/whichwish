@@ -13,7 +13,7 @@
         android:orientation="horizontal">
         <EditText
             android:id="@+id/search_text"
-            android:background="@drawable/searchbaryellow"
+            android:background="@drawable/search_text2"
             android:layout_marginLeft="25dp"
             android:layout_width="290dp"
             android:layout_height="44dp"
@@ -25,13 +25,15 @@
             android:hint="장소 입력" />
         <Button
             android:id="@+id/search_btn"
-            android:background="@drawable/searchbutton"
+            android:background="@drawable/search_btn2"
             android:layout_alignParentRight="true"
             android:layout_marginRight="25dp"
             android:layout_width="35dp"
             android:layout_height="24dp"
             android:layout_centerVertical="true"/>
-    </RelativeLayout>
+
+    </LinearLayout>
+
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"

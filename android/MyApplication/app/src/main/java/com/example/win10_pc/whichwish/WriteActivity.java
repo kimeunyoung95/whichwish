@@ -10,6 +10,7 @@ import android.widget.EditText;
 public class WriteActivity extends AppCompatActivity {
     Button button;
     EditText et1, et2, et3;
+    String mAddr, mLat, mLng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,11 @@ public class WriteActivity extends AppCompatActivity {
         et2 = (EditText) findViewById(R.id.content_et);
         et3 = (EditText) findViewById(R.id.where_et);
         button = (Button) findViewById(R.id.ok_btn);
+        Intent location = getIntent();
+        mAddr = location.getStringExtra("addr");
+        mLat = location.getStringExtra("lat");
+        mLng = location.getStringExtra("lng"); a
+        et3.setText(mAddr);
         //객체선언
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,6 +33,8 @@ public class WriteActivity extends AppCompatActivity {
                 intent.putExtra("title", et1.getText().toString());
                 intent.putExtra("content", et2.getText().toString());
                 intent.putExtra("where", et3.getText().toString());
+                intent.putExtra("lat", mLat);
+                intent.putExtra("lng", mLng);
                 startActivity(intent);
                 finish();
             }

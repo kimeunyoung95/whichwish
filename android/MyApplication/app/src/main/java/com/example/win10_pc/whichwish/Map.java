@@ -8,6 +8,7 @@ import android.system.ErrnoException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,15 +23,25 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     String mLat;
     String mLng;
 
+    Button search_btn;
+    EditText search_text;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        Intent outIntent = getIntent();
+
+        final Intent outIntent = getIntent();
         mAddr = outIntent.getStringExtra("addr");
         mLat = outIntent.getStringExtra("lat");
         mLng = outIntent.getStringExtra("lng");
+
+
+
+        search_text = (EditText)findViewById(R.id.search_text2);
+        search_text.setText(outIntent.getStringExtra("search_map"));
+        search_btn = (Button)findViewById(R.id.search_btn2);
 
         Button next_btn = (Button)findViewById(R.id.next_btn);
 
@@ -43,6 +54,17 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                 writeIntent.putExtra("lng", mLng);
                 startActivity(writeIntent);
 
+            }
+        });
+
+        search_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(search_text.getText().toString() != null) {
+                    outIntent.putExtra("search", search_text.getText().toString());
+                    setResult(RESULT_OK, outIntent);
+                    finish();
+                }
             }
         });
 
