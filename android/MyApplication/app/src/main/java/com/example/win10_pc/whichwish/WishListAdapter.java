@@ -19,6 +19,12 @@ public class WishListAdapter extends BaseAdapter {
     public WishListAdapter(){
 
     }
+    public void setData(ArrayList<WishListViewItem> wishListViewItems){
+        this.listViewItems = wishListViewItems;
+    }
+    public ArrayList<WishListViewItem> getListViewItems(){
+        return listViewItems;
+    }
     @Override
     public int getCount() {
         return listViewItems.size();
