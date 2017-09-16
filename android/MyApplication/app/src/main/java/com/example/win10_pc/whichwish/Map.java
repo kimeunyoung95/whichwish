@@ -25,7 +25,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     EditText search_text;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)  {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
@@ -36,12 +36,11 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         mLng = outIntent.getStringExtra("lng");
 
 
-
-        search_text = (EditText)findViewById(R.id.search_text);
+        search_text = (EditText) findViewById(R.id.search_text);
         search_text.setText(outIntent.getStringExtra("search_map"));
-        search_btn = (Button)findViewById(R.id.search_btn);
+        search_btn = (Button) findViewById(R.id.search_btn);
 
-        Button next_btn = (Button)findViewById(R.id.next_btn);
+        Button next_btn = (Button) findViewById(R.id.next_btn);
 
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +57,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(search_text.getText().toString() != null) {
+                if (search_text.getText().toString() != null) {
                     outIntent.putExtra("search", search_text.getText().toString());
                     setResult(RESULT_OK, outIntent);
                     finish();
@@ -67,7 +66,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         });
 
         FragmentManager fragmentManager = getFragmentManager();
-        MapFragment mapFragment = (MapFragment)fragmentManager.findFragmentById(R.id.map);
+        MapFragment mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
 
@@ -75,7 +74,6 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
         LatLng location = new LatLng(Double.parseDouble(mLat), Double.parseDouble(mLng));
 
         MarkerOptions markerOptions = new MarkerOptions();
@@ -83,7 +81,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         markerOptions.title(mAddr);
         googleMap.addMarker(markerOptions);
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(location));
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16));
+//        googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
     }
 }

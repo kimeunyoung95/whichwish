@@ -41,7 +41,9 @@ public class LocationAdapter  extends BaseAdapter {
             convertView = inflater.inflate(R.layout.location_item, null);
         }
         TextView location = (TextView)convertView.findViewById(R.id.location_item_text);
+        TextView num = (TextView)convertView.findViewById(R.id.num_tv);
         location.setText(datas.get(position).getAddr());
+        num.setText(Integer.toString(position + 1));
 
         return convertView;
     }

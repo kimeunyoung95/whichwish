@@ -1,9 +1,9 @@
 package com.example.win10_pc.whichwish;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,6 +26,7 @@ public class Location_Search extends AppCompatActivity {
 
     EditText search_text;
     Button search_btn;
+    Button display_map_btn;
     ListView search_list;
 
     String lats[];
@@ -45,6 +46,7 @@ public class Location_Search extends AppCompatActivity {
 
         search_text = (EditText)findViewById(R.id.search_text);
         search_btn = (Button)findViewById(R.id.search_btn);
+        search_list = (ListView)findViewById(R.id.search_list);
 
 
         search_btn.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +130,6 @@ public class Location_Search extends AppCompatActivity {
                 JSONObject channel = new JSONObject(jsonObject.getString("channel"));
                 JSONArray items = new JSONArray(channel.getString("item"));
                 jsonResultsLength = items.length();
-
                 if(jsonResultsLength > 0){
                     addrs = new String[jsonResultsLength];
                     lats = new String[jsonResultsLength];
@@ -145,9 +146,6 @@ public class Location_Search extends AppCompatActivity {
 
                 }
                 if(jsonResultsLength > 0){
-
-                    search_list = (ListView)findViewById(R.id.search_list);
-
                     ArrayList<MemberData> datas = new ArrayList<MemberData>();
                     for(int i = 0; i < jsonResultsLength; i++){
                         datas.add(new MemberData(addrs[i], lats[i], lngs[i]));
@@ -157,19 +155,17 @@ public class Location_Search extends AppCompatActivity {
                     search_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Toast.makeText(Location_Search.this, "CHECK", Toast.LENGTH_SHORT).show();
                             mLat = lats[position];
                             mLng = lngs[position];
                             mAddr = addrs[position];
 
-                            Intent intent = new Intent(getApplicationContext(), Map.class);
+                            Intent intent = new Intent(Location_Search.this, Map.class);
                             intent.putExtra("addr", mAddr);
                             intent.putExtra("lat", mLat);
                             intent.putExtra("lng", mLng);
                             intent.putExtra("search_map", search_text.getText().toString());
                             startActivityForResult(intent, 9);
-
-
-
                         }
                     });
                 }
