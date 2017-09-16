@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "mainplus.png",
+      "filename" : "signupsmall.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "mainplus@2x.png",
+      "filename" : "signupsmall@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "mainplus@3x.png",
+      "filename" : "signupsmall@3x.png",
       "scale" : "3x"
     }
   ],

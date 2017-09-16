@@ -31,6 +31,16 @@ class WishViewController: UIViewController {
             self.tableView.reloadData()
         })
     }
+    @IBAction func logOutBtn_TouchUpInside(_ sender: Any) {
+        AuthService.logout(onSuccess: {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let wishVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
+            self.present(wishVC, animated: true, completion: nil)
+        }, onError: {
+            error in
+            ProgressHUD.showError(error)
+        })
+    }
 }
 
 extension WishViewController : UITableViewDelegate, UITableViewDataSource{

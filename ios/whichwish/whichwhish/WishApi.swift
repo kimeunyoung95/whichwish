@@ -25,7 +25,7 @@ class WishApi{
                 let child = s as! DataSnapshot
                 if let dict = child.value as? [String: Any]{
                     let wish = WishModel.transformWish(dict: dict, key: child.key)
-                    array.append(wish)
+                    array.insert(wish, at: 0)
                 }
             })
             completion(array)
