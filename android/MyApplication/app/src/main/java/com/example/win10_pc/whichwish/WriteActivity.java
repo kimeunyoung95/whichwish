@@ -23,7 +23,7 @@ public class WriteActivity extends AppCompatActivity {
         Intent location = getIntent();
         mAddr = location.getStringExtra("addr");
         mLat = location.getStringExtra("lat");
-        mLng = location.getStringExtra("lng"); a
+        mLng = location.getStringExtra("lng");
         et3.setText(mAddr);
         //객체선언
         button.setOnClickListener(new View.OnClickListener() {

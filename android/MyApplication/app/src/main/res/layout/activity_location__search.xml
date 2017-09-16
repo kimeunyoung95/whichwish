@@ -15,7 +15,7 @@
             android:id="@+id/search_text"
             android:background="@drawable/searchbaryellow"
             android:layout_marginLeft="25dp"
-            android:layout_width="290dp"
+            android:layout_width="260dp"
             android:layout_height="44dp"
             android:layout_centerVertical="true"
             android:paddingLeft="40dp"

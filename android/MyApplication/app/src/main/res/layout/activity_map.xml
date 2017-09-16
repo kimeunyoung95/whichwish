@@ -5,51 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.win10_pc.whichwish.Map">
+
     <RelativeLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:background="#f7f7f7"
         android:orientation="horizontal">
+
         <EditText
             android:id="@+id/search_text"
-            android:background="@drawable/search_text2"
-            android:layout_marginLeft="25dp"
-            android:layout_width="290dp"
+            android:layout_width="260dp"
             android:layout_height="44dp"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:background="@drawable/searchbaryellow"
+            android:hint="장소 입력"
             android:paddingLeft="40dp"
-            android:textSize="16dp"
             android:textColor="#000000"
             android:textColorHint="#ffffff"
-            android:hint="장소 입력" />
+            android:textSize="16dp" />
+
         <Button
             android:id="@+id/search_btn"
-            android:background="@drawable/search_btn2"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="25dp"
             android:layout_width="35dp"
             android:layout_height="24dp"
-            android:layout_centerVertical="true"/>
-
-    </LinearLayout>
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/searchbutton" />
+    </RelativeLayout>
 
     <fragment
+        android:id="@+id/map"
+        class="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/map"
-        android:layout_below="@id/frame"
-        class="com.google.android.gms.maps.MapFragment"
-        />
+        android:layout_below="@id/frame" />
 
     <Button
+        android:id="@+id/next_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/next_btn"
-        android:background="@drawable/searchmapright"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="15dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="21dp"
+        android:background="@drawable/searchmapright" />
 
 </RelativeLayout>
