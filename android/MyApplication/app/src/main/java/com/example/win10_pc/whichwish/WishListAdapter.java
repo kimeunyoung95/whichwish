@@ -49,11 +49,12 @@ public class WishListAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.wishlistview_item, viewGroup, false);
         }
-
+        TextView num_tv = (TextView)view.findViewById(R.id.num_tv);
         TextView title_tv = (TextView)view.findViewById(R.id.title_tv);
         TextView content_tv = (TextView)view.findViewById(R.id.content_tv);
 
         WishListViewItem wishListViewItem = listViewItems.get(i);
+        num_tv.setText(Integer.toString(i + 1));
         title_tv.setText(wishListViewItem.getTitle());
         content_tv.setText(wishListViewItem.getContent());
 

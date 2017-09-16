@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,29 +17,50 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     WishListAdapter wishListAdapter = new WishListAdapter();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ListView listView = (ListView) findViewById(R.id.listview);
-        final View header = getLayoutInflater().inflate(R.layout.wishlistview_header, null, false);
-        header.findViewById(R.id.add_btn).setOnClickListener(new View.OnClickListener() {
+        Button add_btn = (Button) findViewById(R.id.add_btn);
+        add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "ADD", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Location_Search.class);
-                //intent add Activity
                 startActivity(intent);
             }
         });
-        listView.addHeaderView(header);
+//        final View header = getLayoutInflater().inflate(R.layout.wishlistview_header, null, false);
+//        //객체 생성
+//        header.findViewById(R.id.add_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getApplicationContext(), "ADD", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(MainActivity.this, Location_Search.class);
+//                //intent add Activity
+//                startActivity(intent);
+//            }
+//        });
+//        listView.addHeaderView(header);
+        //헤더 추가
         loadData();
         listView.setAdapter(wishListAdapter);
-        //test
+        //리스트뷰 설정
         wishListAdapter.addItem("test1", "content1");
         wishListAdapter.addItem("test2", "content2");
+
+        wishListAdapter.addItem("test1", "content1");
+        wishListAdapter.addItem("test2", "content2");
+
+        wishListAdapter.addItem("test1", "content1");
+        wishListAdapter.addItem("test2", "content2");
+
+        wishListAdapter.addItem("test1", "content1");
+        wishListAdapter.addItem("test2", "content2");
+
+        wishListAdapter.addItem("test1", "content1");
+        wishListAdapter.addItem("test2", "content2");
+        //TEST
     }
 
     @Override
@@ -81,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Intent intent = getIntent();
         if (intent.getExtras() != null) {
-            wishListAdapter.addItem(intent.getExtras().getString("title"), intent.getExtras().getString("context"));
+            wishListAdapter.addItem(intent.getExtras().getString("title"), intent.getExtras().getString("where"));
         }
     }
 }
