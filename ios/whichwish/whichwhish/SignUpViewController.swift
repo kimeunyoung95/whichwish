@@ -22,6 +22,9 @@ class SignUpViewController: UIViewController {
         handleTextField()
         
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
     func handleTextField(){
         userNameTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)

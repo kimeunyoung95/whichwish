@@ -28,6 +28,10 @@ class SignInViewController: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     @IBAction func signInBtn_TouchUpInside(_ sender: Any) {
         view.endEditing(true)
         ProgressHUD.show("Waiting...", interaction: false)

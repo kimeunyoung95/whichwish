@@ -29,7 +29,7 @@ class SearchViewController: UIViewController {
 
     func settingSearchBar(){
         searchBar.searchBarStyle = .prominent
-        searchBar.placeholder = "메뉴 또는 식당이름을 검색"
+        searchBar.placeholder = "장소 검색"
         searchBar.frame.size.width = view.frame.size.width - 100
         let searchItem = UIBarButtonItem(customView: searchBar)
         self.navigationItem.rightBarButtonItem = searchItem
@@ -40,6 +40,15 @@ class SearchViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SearchVC_MapVC"{
+            let VC = segue.destination as? MapViewController
+            VC?.place = sender as! MKMapItem
+        }
+    }
+    
+    
 }
 
 
@@ -74,7 +83,7 @@ extension SearchViewController : UISearchBarDelegate{
 
 extension SearchViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        performSegue(withIdentifier: "SearchVC_MapVC", sender: searchResult[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
