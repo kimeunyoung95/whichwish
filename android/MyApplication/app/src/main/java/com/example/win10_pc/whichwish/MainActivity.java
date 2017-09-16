@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         listView.addHeaderView(header);
         loadData();
         listView.setAdapter(wishListAdapter);
+        //test
+        wishListAdapter.addItem("test1", "content1");
+        wishListAdapter.addItem("test2", "content2");
     }
 
     @Override
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Intent intent = getIntent();
-        if (intent != null) {
+        if (intent.getExtras() != null) {
             wishListAdapter.addItem(intent.getExtras().getString("title"), intent.getExtras().getString("context"));
         }
     }
