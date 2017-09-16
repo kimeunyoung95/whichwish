@@ -75,6 +75,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="whichwish" id="Bkx-HK-nBF">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="9iD-cn-LSO">
+                            <connections>
+                                <action selector="logOutBtn_TouchUpInside:" destination="BYZ-38-t0r" id="zVP-fh-Dgj"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="mainplus" id="Ik4-Ge-t55">
                             <color key="tintColor" red="0.98673461294416243" green="0.92055461290699658" blue="0.42682502650796333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -189,18 +194,29 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dBP-Ws-kW3">
+                                <rect key="frame" x="348" y="80" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.28102126979999997" green="1" blue="0.25769515739999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="fre-dg-ldO"/>
+                                    <constraint firstAttribute="height" constant="50" id="zZv-j6-axM"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jgJ-LZ-dZy" firstAttribute="leading" secondItem="Me9-op-tz2" secondAttribute="leading" id="5eF-eu-NDz"/>
                             <constraint firstAttribute="trailing" secondItem="p3N-qg-LdW" secondAttribute="trailing" constant="32" id="LfP-H6-yWz"/>
                             <constraint firstItem="5zu-C0-X3Y" firstAttribute="top" secondItem="p3N-qg-LdW" secondAttribute="bottom" constant="32" id="URJ-eO-3RD"/>
+                            <constraint firstItem="dBP-Ws-kW3" firstAttribute="top" secondItem="4XP-zz-mNw" secondAttribute="bottom" constant="16" id="VmZ-BG-Ek3"/>
                             <constraint firstItem="5zu-C0-X3Y" firstAttribute="top" secondItem="jgJ-LZ-dZy" secondAttribute="bottom" id="gPK-DH-mEV"/>
+                            <constraint firstAttribute="trailing" secondItem="dBP-Ws-kW3" secondAttribute="trailing" constant="16" id="obO-e2-82I"/>
                             <constraint firstItem="jgJ-LZ-dZy" firstAttribute="top" secondItem="4XP-zz-mNw" secondAttribute="bottom" id="xI8-XN-vlY"/>
                             <constraint firstAttribute="trailing" secondItem="jgJ-LZ-dZy" secondAttribute="trailing" id="zLl-8J-jM3"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentImageView" destination="dBP-Ws-kW3" id="Cnj-8s-h0B"/>
                         <outlet property="floatingGo" destination="p3N-qg-LdW" id="o4s-cG-v2e"/>
                         <outlet property="mapView" destination="jgJ-LZ-dZy" id="tGY-DR-ZKu"/>
                         <segue destination="24q-3H-eFn" kind="show" identifier="MapVC_WishInputVCSegue" id="wA4-82-yPl"/>
@@ -309,7 +325,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="tKU-Tr-bjl">
             <objects>
-                <viewController id="ct9-rG-liy" customClass="SignInViewController" customModule="whichwhish" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" id="ct9-rG-liy" customClass="SignInViewController" customModule="whichwhish" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q0Y-MB-wj5"/>
                         <viewControllerLayoutGuide type="bottom" id="k0l-7x-oDM"/>
@@ -520,7 +536,7 @@
     </scenes>
     <resources>
         <image name="descriptionok" width="83" height="83"/>
-        <image name="mainplus" width="22" height="36"/>
+        <image name="mainplus" width="15" height="24"/>
         <image name="searchmapright" width="83" height="83"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -10,7 +10,8 @@ import UIKit
 import MapKit
 class WishInputViewController: UIViewController {
 
-    var place : MKMapItem?
+    var info : AnnotationInfo?
+    
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
@@ -26,7 +27,8 @@ class WishInputViewController: UIViewController {
         saveButton.addGestureRecognizer(tapGesture)
         saveButton.isUserInteractionEnabled = true
         
-        addressLabel.text = place!.placemark.title!
+        
+        addressLabel.text = info!.address
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -56,10 +58,10 @@ class WishInputViewController: UIViewController {
 
     func handleFloatingSave(){
         ProgressHUD.show("Waiting...")
-        let latitude = place!.placemark.coordinate.latitude
-        let longitude = place!.placemark.coordinate.longitude
+        let latitude = info!.coordinate.latitude
+        let longitude = info!.coordinate.longitude
         
-        Api.Wish.uploadWish(title: titleTextField.text!, content: contentTextView.text, place: place!.name!, latitude: "\(latitude)", longitude: "\(longitude)", date: CurrentTime.getCurrentTime(), completion: {
+        Api.Wish.uploadWish(title: titleTextField.text!, content: contentTextView.text, place: info!.place, latitude: "\(latitude)", longitude: "\(longitude)", date: CurrentTime.getCurrentTime(), completion: {
             ProgressHUD.showSuccess("Success")
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
