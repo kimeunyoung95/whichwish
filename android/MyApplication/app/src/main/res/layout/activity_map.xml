@@ -19,13 +19,13 @@
         <EditText
             android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:id="@+id/search_text"
+            android:id="@+id/search_text2"
             android:hint="장소 입력"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="검색"
-            android:id="@+id/search_btn"/>
+            android:id="@+id/search_btn2"/>
     </LinearLayout>
     <fragment
         android:layout_width="match_parent"
