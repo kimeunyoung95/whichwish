@@ -1,10 +1,12 @@
 package com.example.win10_pc.whichwish;
 
+import java.io.Serializable;
+
 /**
  * Created by kyi42 on 2017-09-15.
  */
 
-public class WishListViewItem {
+public class WishListViewItem implements Serializable{
     private String title;//해야할 일
     private String content;//map 위치
 
