@@ -36,6 +36,7 @@ public class WriteActivity extends AppCompatActivity {
                 intent.putExtra("lat", mLat);
                 intent.putExtra("lng", mLng);
                 startActivity(intent);
+                finish();
             }
         });
         //리스너 설정
