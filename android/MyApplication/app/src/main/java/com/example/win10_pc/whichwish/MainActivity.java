@@ -9,9 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.view.View;
 
+import android.widget.AdapterView;
 import android.widget.Button;
 
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import java.io.FileInputStream;
@@ -88,6 +90,12 @@ public class MainActivity extends AppCompatActivity {
         loadData();
 
         listView.setAdapter(wishListAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), "TOUCH", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //리스트뷰 설정
 

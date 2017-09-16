@@ -112,12 +112,8 @@ public class WishListAdapter extends BaseAdapter {
     public void addItem(String title, String content) {
 
         WishListViewItem item = new WishListViewItem();
-
         item.setTitle(title);
-
         item.setContent(title);
-
-
         listViewItems.add(item);
 
     }
