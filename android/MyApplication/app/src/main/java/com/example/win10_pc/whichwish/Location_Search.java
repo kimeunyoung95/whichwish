@@ -1,6 +1,5 @@
 package com.example.win10_pc.whichwish;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -159,13 +158,7 @@ public class Location_Search extends AppCompatActivity {
                             mLng = lngs[position];
                             mAddr = addrs[position];
 
-                            Intent intent = new Intent(getApplicationContext(), Map.class);
-                            intent.putExtra("addr", mAddr);
-                            intent.putExtra("lat", mLat);
-                            intent.putExtra("lng", mLng);
-                            startActivityForResult(intent, 9);
-
-
+                            Toast.makeText(getApplicationContext(), "Latitude : " + mLat + ", Longitude : " + mLng, Toast.LENGTH_SHORT).show();
 
                         }
                     });
