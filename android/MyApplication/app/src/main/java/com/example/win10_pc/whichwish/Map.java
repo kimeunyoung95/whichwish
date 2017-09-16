@@ -2,10 +2,8 @@ package com.example.win10_pc.whichwish;
 
 import android.app.FragmentManager;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.system.ErrnoException;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,9 +37,9 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
 
 
-        search_text = (EditText)findViewById(R.id.search_text2);
+        search_text = (EditText)findViewById(R.id.search_text);
         search_text.setText(outIntent.getStringExtra("search_map"));
-        search_btn = (Button)findViewById(R.id.search_btn2);
+        search_btn = (Button)findViewById(R.id.search_btn);
 
         Button next_btn = (Button)findViewById(R.id.next_btn);
 
