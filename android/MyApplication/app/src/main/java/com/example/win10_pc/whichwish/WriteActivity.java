@@ -28,6 +28,7 @@ public class WriteActivity extends AppCompatActivity {
                 intent.putExtra("content", et2.getText().toString());
                 intent.putExtra("where", et3.getText().toString());
                 startActivity(intent);
+                finish();
             }
         });
         //리스너 설정
