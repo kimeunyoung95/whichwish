@@ -3,19 +3,22 @@ package com.example.win10_pc.whichwish;
 
 
 import android.content.Context;
-
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
-
 import android.view.View;
-
 import android.view.ViewGroup;
-
 import android.widget.BaseAdapter;
-
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -25,17 +28,23 @@ import java.util.ArrayList;
 
 public class WishListAdapter extends BaseAdapter {
     private ArrayList<WishListViewItem> listViewItems;
+    Context context;
 
-    public WishListAdapter() {
+    public WishListAdapter(Context context) {
         listViewItems = new ArrayList<WishListViewItem>();
+        this.context = context;
     }
 
-    public WishListAdapter(ArrayList<WishListViewItem> listViewItems) {
-        if(listViewItems != null) {
+    public WishListAdapter(ArrayList<WishListViewItem> listViewItems, Context context) {
+        if (listViewItems != null) {
             this.listViewItems = listViewItems;
-        }
-        else
+        } else
             this.listViewItems = new ArrayList<WishListViewItem>();
+        this.context = context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 
     public void setData(ArrayList<WishListViewItem> wishListViewItems) {
@@ -73,11 +82,18 @@ public class WishListAdapter extends BaseAdapter {
 
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.wishlistview_item, viewGroup, false);
+            view = inflater.inflate(R.layout.wishlistview_cancelitem, viewGroup, false);
         }
         TextView num_tv = (TextView) view.findViewById(R.id.num_tv);
         TextView title_tv = (TextView) view.findViewById(R.id.title_tv);
         TextView content_tv = (TextView) view.findViewById(R.id.content_tv);
+        final Button del_btn = (Button) view.findViewById(R.id.del_btn);
+        del_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                delItem(pos);
+            }
+        });
         WishListViewItem wishListViewItem = listViewItems.get(i);
         num_tv.setText(Integer.toString(i + 1));
         title_tv.setText(wishListViewItem.getTitle());
@@ -97,6 +113,14 @@ public class WishListAdapter extends BaseAdapter {
 
     public void delItem(int index) {
         listViewItems.remove(index);
+        notifyDataSetChanged();
+        //저장
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        Type listOfWishes = new TypeToken<List<WishListViewItem>>() {
+        }.getType();
+        String strWishes = new Gson().toJson(getListViewItems(), listOfWishes);
+//        strWishes = new Gson().toJson(new ArrayList<WishListViewItem>(), listOfWishes);
+        Log.i("save", strWishes);
+        preferences.edit().putString("WISH_LIST", strWishes).apply();
     }
-
 }
