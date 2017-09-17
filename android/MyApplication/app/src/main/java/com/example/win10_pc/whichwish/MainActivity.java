@@ -64,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
         wishListViewItems = new Gson().fromJson(preferences.getString("WISH_LIST", ""), listOfWishes);
         //데이터 로드 완료
         try {
-            wishListAdapter = new WishListAdapter(wishListViewItems);
+            wishListAdapter = new WishListAdapter(wishListViewItems, getApplicationContext());
         } catch (NullPointerException e) {
-            wishListAdapter = new WishListAdapter();
+            wishListAdapter = new WishListAdapter(getApplicationContext());
         }
         listView.setAdapter(wishListAdapter);
         //리스트뷰 설정 완료
@@ -114,6 +114,12 @@ public class MainActivity extends AppCompatActivity {
         long t = SystemClock.elapsedRealtime();
         alarmIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
         alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, t, after, alarmIntent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveData();
     }
 
     @Override
