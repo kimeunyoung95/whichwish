@@ -22,6 +22,10 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingSearchBar()
+
+
+        
+        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -33,6 +37,8 @@ class SearchViewController: UIViewController {
         searchBar.frame.size.width = view.frame.size.width - 100
         let searchItem = UIBarButtonItem(customView: searchBar)
         self.navigationItem.rightBarButtonItem = searchItem
+        navigationController?.navigationBar.barTintColor = UIColor(red: 248/255, green: 214/255, blue: 22/255, alpha: 1)
+        
         searchBar.delegate = self
     }
 

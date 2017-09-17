@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
+
 class Annotation : NSObject,MKAnnotation{
     var coordinate : CLLocationCoordinate2D
     var title: String?
@@ -102,9 +103,49 @@ class MapViewController: UIViewController , MKMapViewDelegate,CLLocationManagerD
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-
-        let info = AnnotationInfo(coordinate: view.annotation!.coordinate, place: "\(CurrentTime.getCurrentTime_Annotation()) 기록", address: "\(view.annotation!.coordinate.latitude) - \(view.annotation!.coordinate.longitude)")
-        performSegue(withIdentifier: "MapVC_WishInputVCSegue", sender: info)
+        
+        let geoCoder = CLGeocoder()
+        let location = CLLocation(latitude: view.annotation!.coordinate.latitude, longitude: view.annotation!.coordinate.longitude)
+        geoCoder.reverseGeocodeLocation(location, completionHandler: {
+            (placeMark, error) in
+ 
+            var pm = placeMark?[0]
+            let place = "\(pm!.locality!) \(pm!.name!)"
+            
+            let info = AnnotationInfo(coordinate: view.annotation!.coordinate, place: place, address: place)
+            
+            self.performSegue(withIdentifier: "MapVC_WishInputVCSegue", sender: info)
+            
+            /*
+            // Place details
+            var placeMark: CLPlacemark!
+            placeMark = placemark?[0]
+            
+            // Address dictionary
+            print(placeMark.addressDictionary as Any)
+            
+            // Location name
+            if let locationName = placeMark.addressDictionary!["Name"] as? NSString {
+                print(locationName)
+            }
+            // Street address
+            if let street = placeMark.addressDictionary!["Thoroughfare"] as? NSString {
+                print(street)
+            }
+            // City
+            if let city = placeMark.addressDictionary!["City"] as? NSString {
+                print(city)
+            }
+            // Zip code
+            if let zip = placeMark.addressDictionary!["ZIP"] as? NSString {
+                print(zip)
+            }
+            // Country
+            if let country = placeMark.addressDictionary!["Country"] as? NSString {
+                print(country)
+            }
+            */
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
