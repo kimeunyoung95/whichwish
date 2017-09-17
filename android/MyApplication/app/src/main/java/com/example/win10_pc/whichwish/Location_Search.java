@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -155,7 +154,7 @@ public class Location_Search extends AppCompatActivity {
                     search_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Toast.makeText(Location_Search.this, "CHECK", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(Location_Search.this, "CHECK", Toast.LENGTH_SHORT).show();
                             mLat = lats[position];
                             mLng = lngs[position];
                             mAddr = addrs[position];

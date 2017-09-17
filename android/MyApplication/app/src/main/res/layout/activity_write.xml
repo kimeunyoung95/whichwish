@@ -88,7 +88,8 @@
         android:layout_height="70dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="17dp"
-        android:layout_marginTop="566dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/where_et"
         android:background="@drawable/descriptionok" />
 
 </RelativeLayout>
