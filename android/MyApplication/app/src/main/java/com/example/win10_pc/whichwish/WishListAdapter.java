@@ -24,13 +24,18 @@ import java.util.ArrayList;
 
 
 public class WishListAdapter extends BaseAdapter {
-    private ArrayList<WishListViewItem> listViewItems = new ArrayList<WishListViewItem>();
+    private ArrayList<WishListViewItem> listViewItems;
 
     public WishListAdapter() {
-
+        listViewItems = new ArrayList<WishListViewItem>();
     }
-    public WishListAdapter(ArrayList<WishListViewItem> listViewItems){
-        this.listViewItems = listViewItems;
+
+    public WishListAdapter(ArrayList<WishListViewItem> listViewItems) {
+        if(listViewItems != null) {
+            this.listViewItems = listViewItems;
+        }
+        else
+            this.listViewItems = new ArrayList<WishListViewItem>();
     }
 
     public void setData(ArrayList<WishListViewItem> wishListViewItems) {
@@ -43,7 +48,12 @@ public class WishListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return listViewItems.size();
+        if (listViewItems == null) {
+            return 0;
+        } else {
+
+            return listViewItems.size();
+        }
     }
 
     @Override
@@ -71,14 +81,17 @@ public class WishListAdapter extends BaseAdapter {
         WishListViewItem wishListViewItem = listViewItems.get(i);
         num_tv.setText(Integer.toString(i + 1));
         title_tv.setText(wishListViewItem.getTitle());
-        content_tv.setText(wishListViewItem.getContent());
+        content_tv.setText(wishListViewItem.getMap());
         return view;
     }
 
-    public void addItem(String title, String content) {
-        WishListViewItem item = new WishListViewItem(title, content);
+    public void addItem(String title, String content, String map, String lat, String lon) {
+        WishListViewItem item = new WishListViewItem(title, content, map, lat, lon);
         item.setTitle(title);
-        item.setContent(title);
+        item.setContent(content);
+        item.setMap(map);
+        item.setLat(lat);
+        item.setLon(lon);
         listViewItems.add(item);
     }
 

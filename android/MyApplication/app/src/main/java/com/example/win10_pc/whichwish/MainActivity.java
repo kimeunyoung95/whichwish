@@ -1,36 +1,53 @@
 package com.example.win10_pc.whichwish;
 
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.google.gson.GsonBuilder;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<WishListViewItem> arrayList = new ArrayList<WishListViewItem>();
+    ArrayList<WishListViewItem> wishListViewItems;
+    AlarmManager alarmManager;
     WishListAdapter wishListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        alarmManager = (AlarmManager) getApplicationContext().getSystemService(getApplicationContext().ALARM_SERVICE);
+        Alarm();
+        //알람매니저 설정 로컬 푸쉬
         setContentView(R.layout.activity_main);
         ListView listView = (ListView) findViewById(R.id.listview);
         Button add_btn = (Button) findViewById(R.id.add_btn);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+        //객체화 및 리스너 설정
         add_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -41,80 +58,72 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-
-//        final View header = getLayoutInflater().inflate(R.layout.wishlistview_header, null, false);
-//        //객체 생성
-//        header.findViewById(R.id.add_btn).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getApplicationContext(), "ADD", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(MainActivity.this, Location_Search.class);
-//                //intent add Activity
-//                startActivity(intent);
-//            }
-//        });
-//        listView.addHeaderView(header);
-        //헤더 추가
-        wishListAdapter = new WishListAdapter();
-        loadData2();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Type listOfWishes = new TypeToken<List<WishListViewItem>>() {
+        }.getType();
+        wishListViewItems = new Gson().fromJson(preferences.getString("WISH_LIST", ""), listOfWishes);
+        //데이터 로드 완료
+        try {
+            wishListAdapter = new WishListAdapter(wishListViewItems);
+        } catch (NullPointerException e) {
+            wishListAdapter = new WishListAdapter();
+        }
         listView.setAdapter(wishListAdapter);
-        //리스트뷰 설정
-        wishListAdapter.addItem("test1", "content1");
-        wishListAdapter.addItem("test2", "content2");
+        //리스트뷰 설정 완료
+
         //TEST
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        saveData2();
-    }
-    public void saveData2(){
-        SettingData data = new SettingData();
-        data.setData(wishListAdapter.getListViewItems());
-        PreferenceManager.getDefaultSharedPreferences(this).edit().putString("setting", data.toString()).apply();
-    }
-    public void loadData2(){
-        String json = PreferenceManager.getDefaultSharedPreferences(this).getString("setting", null);
-        SettingData data2 = new GsonBuilder().create().fromJson(json, SettingData.class);
-        arrayList = data2.getData();
+        saveData();
     }
 
     public void saveData() {
-        try {
-            FileOutputStream fos = new FileOutputStream("./t.tmp");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(wishListAdapter.getListViewItems());
-            oos.close();
-        } catch (FileNotFoundException e) {
-            Toast.makeText(getApplicationContext(), "FileNotFoundException", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), "IOException", Toast.LENGTH_SHORT).show();
-        }
-    }
-    public void loadData() {
-        try {
-            FileInputStream fis = new FileInputStream(".\t.tmp");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            wishListAdapter.setData((ArrayList<WishListViewItem>) ois.readObject());
-            ois.close();
-        } catch (FileNotFoundException e) {
-            Toast.makeText(getApplicationContext(), "FileNotFoundException", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), "IOException", Toast.LENGTH_SHORT).show();
-        } catch (ClassNotFoundException e) {
-            Toast.makeText(getApplicationContext(), "ClassNotFoundException", Toast.LENGTH_SHORT).show();
-        }
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Type listOfWishes = new TypeToken<List<WishListViewItem>>() {
+        }.getType();
+        String strWishes = new Gson().toJson(wishListAdapter.getListViewItems(), listOfWishes);
+//        strWishes = new Gson().toJson(new ArrayList<WishListViewItem>(), listOfWishes);
+        Log.i("save", strWishes);
+        preferences.edit().putString("WISH_LIST", strWishes).apply();
     }
 
+    public void loadData() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Type listOfWishes = new TypeToken<List<WishListViewItem>>() {
+        }.getType();
+        ArrayList<WishListViewItem> wishListViewItems = new Gson().fromJson(preferences.getString("WISH_LIST", ""), listOfWishes);
+    }
+
+    public void Alarm() {
+        if (Build.VERSION.SDK_INT >= 23 &&
+                ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+        }//스플래쉬로 이동
+//        SmartLocation.with(getApplicationContext()).location().start(new OnLocationUpdatedListener() {
+//            @Override
+//            public void onLocationUpdated(Location location) {
+//
+//            }
+//        });
+        PendingIntent alarmIntent;
+        Intent intent = new Intent(MainActivity.this, AlarmReceiver.class);
+        long after = 1000 * 10;
+        long t = SystemClock.elapsedRealtime();
+        alarmIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
+        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, t, after, alarmIntent);
+    }
 
     @Override
-
     protected void onResume() {
         super.onResume();
         Intent intent = getIntent();
-        if (intent.getExtras() != null) {
-            wishListAdapter.addItem(intent.getExtras().getString("title"), intent.getExtras().getString("where"));
+        if (intent.getExtras() != null && intent.getExtras().getString("title") != null) {
+            wishListAdapter.addItem(intent.getExtras().getString("title"), intent.getExtras().getString("content"),
+                    intent.getExtras().getString("where"), intent.getExtras().getString("lat"), intent.getExtras().getString("lng"));
         }
+        saveData();
     }
 }

@@ -5,10 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/wwicon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -20,10 +24,14 @@
         </activity>
         <activity android:name=".Location_Search" />
         <activity android:name=".WriteActivity" />
-        <activity android:name=".PushActivity" />
         <activity android:name=".DistanceActivity"></activity>
         <activity android:name=".Map"></activity>
 
+        <receiver android:name=".AlarmReceiver">
+            <intent-filter>
+                <action android:name="mobile.cau.myapplication.ALARM_START" />
+            </intent-filter>
+        </receiver>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCIqQ_KHkKXK3TNtIFbudekCnt2dOlkpbY" />

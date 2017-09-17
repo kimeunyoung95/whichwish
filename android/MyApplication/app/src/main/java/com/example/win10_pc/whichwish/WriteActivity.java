@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class WriteActivity extends AppCompatActivity {
     Button button;
@@ -21,7 +22,7 @@ public class WriteActivity extends AppCompatActivity {
         et3 = (EditText) findViewById(R.id.where_et);
         button = (Button) findViewById(R.id.ok_btn);
         Intent location = getIntent();
-        mAddr = location.getStringExtra("addr");
+        mAddr = location.getStringExtra("addr");//한글주소
         mLat = location.getStringExtra("lat");
         mLng = location.getStringExtra("lng");
         et3.setText(mAddr);
@@ -36,6 +37,7 @@ public class WriteActivity extends AppCompatActivity {
                 intent.putExtra("lat", mLat);
                 intent.putExtra("lng", mLng);
                 startActivity(intent);
+                Toast.makeText(getApplicationContext(), et2.getText().toString() + " : " + et3.getText().toString(), Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

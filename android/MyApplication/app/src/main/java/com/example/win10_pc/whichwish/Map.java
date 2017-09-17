@@ -50,7 +50,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                 writeIntent.putExtra("lat", mLat);
                 writeIntent.putExtra("lng", mLng);
                 startActivity(writeIntent);
-
+                finish();
             }
         });
 
