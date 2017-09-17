@@ -21,7 +21,33 @@ class SignUpViewController: UIViewController {
         signUpButton.isEnabled = false
         handleTextField()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+        
     }
+    
+    func keyboardWillShow(_ notification: NSNotification){
+        print(notification)
+        let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+        //print(keyboardFrame)
+        UIView.animate(withDuration: 0.25){
+            self.view.frame.origin = CGPoint(x: 0, y: -keyboardFrame!.height/3)
+        }
+        
+    }
+    
+    func keyboardWillHide(_ notification: NSNotification){
+        print(notification)
+        let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+        //print(keyboardFrame)
+        UIView.animate(withDuration: 0.25){
+            
+            self.view.frame.origin = CGPoint(x: 0, y: 0)
+        }
+    }
+
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
