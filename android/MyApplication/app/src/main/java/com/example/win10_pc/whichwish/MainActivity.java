@@ -125,11 +125,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        loadData();
         Intent intent = getIntent();
         if (intent.getExtras() != null && intent.getExtras().getString("title") != null) {
             wishListAdapter.addItem(intent.getExtras().getString("title"), intent.getExtras().getString("content"),
                     intent.getExtras().getString("where"), intent.getExtras().getString("lat"), intent.getExtras().getString("lng"));
         }
-        saveData();
     }
 }
